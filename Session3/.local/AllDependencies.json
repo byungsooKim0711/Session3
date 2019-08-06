@@ -1077,9 +1077,9 @@
     "restore": {
       "projectUniqueName": "Session3",
       "projectName": "Session3",
-      "projectPath": "C:\\Users\\USER\\Documents\\UiPath\\Session3\\.local",
+      "projectPath": "D:\\spid_김병수\\UiPath_Workshop\\Session3\\.local",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USER\\Documents\\UiPath\\Session3\\.local"
+      "outputPath": "D:\\spid_김병수\\UiPath_Workshop\\Session3\\.local"
     },
     "frameworks": {
       "net461": {
