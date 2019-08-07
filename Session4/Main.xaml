@@ -1,0 +1,890 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.won="7000" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="won" Type="InArgument(x:Int32)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1180,716</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="21">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="15">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap:VirtualizedContainerService.HintSize="1140,636" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="s:String[]" Name="array" />
+      <Variable x:TypeArguments="x:String" Name="pdfText" />
+      <Variable x:TypeArguments="sd:DataTable" Name="resultDT" />
+      <Variable x:TypeArguments="x:String" Name="filename" />
+    </Flowchart.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        <av:Point x:Key="ShapeLocation">290,2.5</av:Point>
+        <av:Size x:Key="ShapeSize">60,75</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">320,77.5 320,120.38 392,120.38</av:PointCollection>
+        <x:Double x:Key="Width">1110</x:Double>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart.StartNode>
+      <x:Reference>__ReferenceID5</x:Reference>
+    </Flowchart.StartNode>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">2,113</av:Point>
+          <av:Size x:Key="ShapeSize">216,74</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">110,187 110,217 140,217 140,233</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="PDF -&gt; stringArray" sap:VirtualizedContainerService.HintSize="216,74" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:ReadPDFText DisplayName="Read PDF Text" FileName="Data\수출신고필증(갑지 템플릿_데이터 입력).pdf" sap:VirtualizedContainerService.HintSize="330,59" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[pdfText]" />
+        <Assign sap:VirtualizedContainerService.HintSize="330,63" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign.To>
+            <OutArgument x:TypeArguments="s:String[]">[array]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="s:String[]">[pdfText.Split(Environment.NewLine.ToArray,StringSplitOptions.RemoveEmptyEntries)]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </Sequence>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">32,233</av:Point>
+              <av:Size x:Key="ShapeSize">216,74</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">140,307 140,337 120,337 120,343</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap:VirtualizedContainerService.HintSize="216,74" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="430,260" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" WorkbookPath="Result\result.xlsx">
+              <ui:ExcelApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="368,151" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ExcelReadRange AddHeaders="True" DataTable="[resultDT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="330,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" Range="A6" SheetName="Sheet1" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:ExcelApplicationScope.Body>
+            </ui:ExcelApplicationScope>
+          </Sequence>
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID0">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">12,343</av:Point>
+                  <av:Size x:Key="ShapeSize">216,74</av:Size>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence sap:VirtualizedContainerService.HintSize="216,74" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="623,685" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[resultDT.Columns]">
+                  <ui:ForEach.Body>
+                    <ActivityAction x:TypeArguments="sd:DataColumn">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="sd:DataColumn" Name="column" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="591,544" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="temp" />
+                          <Variable x:TypeArguments="x:Int32" Name="arrayIndex" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[arrayIndex]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="553,452" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[array]">
+                          <ui:ForEach.Body>
+                            <ActivityAction x:TypeArguments="x:String">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="521,311" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <If Condition="[item.Trim.Contains(column.ToString)]" sap:VirtualizedContainerService.HintSize="483,219" sap2010:WorkflowViewState.IdRef="If_1">
+                                  <If.Then>
+                                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="330,59" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[array(arrayIndex + 1)]" TopMost="True" />
+                                  </If.Then>
+                                </If>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:ForEach.Body>
+                        </ui:ForEach>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEach.Body>
+                </ui:ForEach>
+              </Sequence>
+            </FlowStep>
+          </FlowStep.Next>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <FlowStep x:Name="__ReferenceID5">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">392,83.38</av:Point>
+          <av:Size x:Key="ShapeSize">216,74</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">500,157.38 500,207.38</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="PDF -&gt; Excel" sap:VirtualizedContainerService.HintSize="216,74" sap2010:WorkflowViewState.IdRef="Sequence_14">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:ReadPDFText DisplayName="Read PDF Text" FileName="Data\수출신고필증(갑지 템플릿_데이터 입력).pdf" sap:VirtualizedContainerService.HintSize="468,59" sap2010:WorkflowViewState.IdRef="ReadPDFText_2" Range="All" Text="[pdfText]" />
+        <Assign sap:VirtualizedContainerService.HintSize="468,63" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign.To>
+            <OutArgument x:TypeArguments="s:String[]">[array]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="s:String[]">[pdfText.Split(Environment.NewLine.ToArray,StringSplitOptions.RemoveEmptyEntries)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="468,519" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" Visible="False" WorkbookPath="Temp\tmp.xlsx">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="438,410" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:Int32" Name="index" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[index]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="400,318" sap2010:WorkflowViewState.IdRef="ForEach`1_7" Values="[array]">
+                  <ui:ForEach.Body>
+                    <ActivityAction x:TypeArguments="x:String">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="368,179" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:ExcelWriteCell Cell="[&quot;A&quot;+(index+1).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="Sheet1" Text="[item.Trim]" />
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEach.Body>
+                </ui:ForEach>
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+        </ui:ExcelApplicationScope>
+      </Sequence>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">392,207.38</av:Point>
+              <av:Size x:Key="ShapeSize">216,74</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">500,281.38 500,343</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="Tmp Excel -&gt; Result Excel" sap:VirtualizedContainerService.HintSize="216,74" sap2010:WorkflowViewState.IdRef="Sequence_18">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="readCell" />
+              <Variable x:TypeArguments="x:Boolean" Name="fileExists" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="480,63" sap2010:WorkflowViewState.IdRef="Assign_13">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[filename]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["Result\김병수_" + DateTime.Today.ToString("yyyyMMdd") + ".xlsx"]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:PathExists DisplayName="Path Exists" Exists="[fileExists]" sap:VirtualizedContainerService.HintSize="480,93" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[filename]" PathType="File" />
+            <If Condition="[fileExists]" sap:VirtualizedContainerService.HintSize="480,219" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Then>
+                <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="216,22" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[filename]" />
+              </If.Then>
+            </If>
+            <ui:CopyFile ContinueOnError="{x:Null}" Destination="[filename]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="480,22" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="False" Path="Result\result.xlsx" />
+            <Sequence DisplayName="날짜" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_25">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A11" DisplayName="제출번호" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_1" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="C7" DisplayName="제출번호" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="Sheet1" Text="[readCell.Split(&quot;(&quot;c)(1).Replace(&quot;)&quot;, &quot;&quot;)]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="제출번호" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_49">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A11" DisplayName="제출번호" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_23" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="D7" DisplayName="제출번호" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_26" SheetName="Sheet1" Text="[readCell.Split(&quot;(&quot;c)(0)]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="신고자" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_26">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A18" DisplayName="신고자" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_2" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="E7" DisplayName="신고자" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_2" SheetName="Sheet1" Text="[readCell]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="신고 번호" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_27">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A19" DisplayName="신고 번호" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_3" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="F7" DisplayName="신고 번호" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_3" SheetName="Sheet1" Text="[readCell.Split(&quot; &quot;c)(0)]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="C/S" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_28">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A16" DisplayName="C/S" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_4" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="G7" DisplayName="C/S" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_4" SheetName="Sheet1" Text="[readCell.Split(&quot; &quot;c)(readCell.Split(&quot; &quot;c).Length-1)]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="수출자" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_29">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A24" DisplayName="수출자" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_5" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="H7" DisplayName="수출자" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_5" SheetName="Sheet1" Text="[readCell]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="주소" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_30">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A29" DisplayName="주소" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_6" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="I7" DisplayName="주소" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_6" SheetName="Sheet1" Text="[readCell]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="거래구분" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_31">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A28" DisplayName="거래구분" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_7" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="J7" DisplayName="거래구분" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_7" SheetName="Sheet1" Text="[readCell.Split(&quot; &quot;c)(0)]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="종류" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_32">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A28" DisplayName="종류" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_8" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="K7" DisplayName="종류" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_8" SheetName="Sheet1" Text="[readCell.Split(&quot; &quot;c)(2)]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="결제방법" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_33">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A28" DisplayName="결제방법" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_9" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="L7" DisplayName="결제방법" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_9" SheetName="Sheet1" Text="[readCell.Split(&quot; &quot;c)(4)]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="통관고유부호" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_34">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A37" DisplayName="통관고유부호" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_10" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="M7" DisplayName="통관고유부호" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_10" SheetName="Sheet1" Text="[readCell.Split(&quot; &quot;c)(1)]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="목적국" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_35">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A35" DisplayName="목적국" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_11" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="N7" DisplayName="목적국" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_11" SheetName="Sheet1" Text="[readCell]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="적재항" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_36">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A33" DisplayName="적재항" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_12" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="O7" DisplayName="적재항" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_12" SheetName="Sheet1" Text="[readCell]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="거래품명" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_37">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A85" DisplayName="거래품명" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_13" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="P7" DisplayName="거래품명" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_13" SheetName="Sheet1" Text="[readCell]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="수량" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_38">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A97" DisplayName="수량" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_14" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="Q7" DisplayName="수량" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_14" SheetName="Sheet1" Text="[readCell.Split(&quot; &quot;c)(2)]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="단가" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_39">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A97" DisplayName="단가" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_15" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="R7" DisplayName="단가" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_15" SheetName="Sheet1" Text="[readCell.Split(&quot; &quot;c)(4)]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="금액" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_40">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A97" DisplayName="금액" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_16" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="S7" DisplayName="금액" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_16" SheetName="Sheet1" Text="[readCell.Split(&quot; &quot;c)(6)]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="순중량" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_41">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A98" DisplayName="순중량" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_17" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="T7" DisplayName="순중량" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_17" SheetName="Sheet1" Text="[readCell.Split(&quot; &quot;c)(2)]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="세번부호" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_42">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A98" DisplayName="세번부호" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_18" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="U7" DisplayName="세번부호" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_18" SheetName="Sheet1" Text="[readCell.Split(&quot; &quot;c)(0)]" WorkbookPath="[filename]" />
+            </Sequence>
+            <Sequence DisplayName="송품장부호" sap:VirtualizedContainerService.HintSize="480,74" sap2010:WorkflowViewState.IdRef="Sequence_43">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadCell Cell="A107" DisplayName="송품장부호" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_19" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                <ui:ReadCell.Result>
+                  <OutArgument x:TypeArguments="x:String">[readCell]</OutArgument>
+                </ui:ReadCell.Result>
+              </ui:ReadCell>
+              <ui:WriteCell Cell="V7" DisplayName="송품장부호" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_19" SheetName="Sheet1" Text="[readCell]" WorkbookPath="[filename]" />
+            </Sequence>
+          </Sequence>
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">392,343</av:Point>
+                  <av:Size x:Key="ShapeSize">216,74</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">500,417 500,467</av:PointCollection>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence DisplayName="환율 정보 가져오기" sap:VirtualizedContainerService.HintSize="216,74" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="ui:GenericValue" Name="readCell" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Sequence DisplayName="금액" sap:VirtualizedContainerService.HintSize="430,179" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ReadCell Cell="A97" DisplayName="금액" sap:VirtualizedContainerService.HintSize="330,87" sap2010:WorkflowViewState.IdRef="ReadCell_21" SheetName="Sheet1" WorkbookPath="Temp\tmp.xlsx">
+                    <ui:ReadCell.Result>
+                      <OutArgument x:TypeArguments="ui:GenericValue">[readCell]</OutArgument>
+                    </ui:ReadCell.Result>
+                  </ui:ReadCell>
+                </Sequence>
+                <Assign sap:VirtualizedContainerService.HintSize="430,63" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="ui:GenericValue">[readCell]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="ui:GenericValue">[readCell.Split(" "c)(6).Replace(",", "")]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <ui:OpenBrowser UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="430,2121" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" Url="https://www.daum.net">
+                  <ui:OpenBrowser.Body>
+                    <ActivityAction x:TypeArguments="x:Object">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="368,2022" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="ui:GenericValue" Name="rate" />
+                          <Variable x:TypeArguments="x:Int64" Name="bigInteger" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="330,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+                        <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Into 'INPUT  query'" EmptyField="True" sap:VirtualizedContainerService.HintSize="330,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="False" SimulateType="False" Text="환율[k(enter)]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="04fd23b048f85e59e4e3ce2a37f0a107" Selector="&lt;webctrl id='q' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                          </ui:TypeInto.Target>
+                        </ui:TypeInto>
+                        <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="달러" sap:VirtualizedContainerService.HintSize="330,134" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="미국 (달러 USD)">
+                          <ui:SelectItem.Items>
+                            <scg:List x:TypeArguments="x:String" Capacity="64">
+                              <x:String>대한민국(원 KRW)</x:String>
+                              <x:String>미국 (달러 USD)</x:String>
+                              <x:String>일본 (엔 JPY)</x:String>
+                              <x:String>유로 (유로 EUR)</x:String>
+                              <x:String>중국 (위안 CNY)</x:String>
+                              <x:String>호주 (오스트레일리아달러 AUD)</x:String>
+                              <x:String>남아공 (남아프리카공화국자르 ZAR)</x:String>
+                              <x:String>노르웨이 (노르웨이크로네 NOK)</x:String>
+                              <x:String>뉴질랜드 (뉴질랜드달러 NZD)</x:String>
+                              <x:String>대만 (신타이완달러 TWD)</x:String>
+                              <x:String>덴마크 (덴마크크로네 DKK)</x:String>
+                              <x:String>러시아 (러시아루블 RUB)</x:String>
+                              <x:String>말레이시아 (링키트 MYR)</x:String>
+                              <x:String>멕시코 (멕시코페소 MXN)</x:String>
+                              <x:String>몽골 (몽골투그릭 MNT)</x:String>
+                              <x:String>바레인 (바레인디나르 BHD)</x:String>
+                              <x:String>방글라데시 (방글라데시타카 BDT)</x:String>
+                              <x:String>베트남 (베트남동 VND)</x:String>
+                              <x:String>브라질 (레알 BRL)</x:String>
+                              <x:String>브루나이 (부루네이달러 BND)</x:String>
+                              <x:String>사우디 (사우디리얄 SAR)</x:String>
+                              <x:String>스웨덴 (스웨덴크로나 SEK)</x:String>
+                              <x:String>스위스 (스위스프랑 CHF)</x:String>
+                              <x:String>싱가포르 (싱가폴달러 SGD)</x:String>
+                              <x:String>아랍에미리트 (아랍에미리트디르함 AED)</x:String>
+                              <x:String>영국 (파운드 GBP)</x:String>
+                              <x:String>요르단 (요르단디나르 JOD)</x:String>
+                              <x:String>이스라엘 (이스라엘쉐캐림 ILS)</x:String>
+                              <x:String>이집트 (이집트파운드 EGP)</x:String>
+                              <x:String>인도 (루피 INR)</x:String>
+                              <x:String>인도네시아 (인도네시아루피아 IDR)</x:String>
+                              <x:String>체코 (체코코루나 CZK)</x:String>
+                              <x:String>카자흐스탄 (카자흐스탄텡게 KZT)</x:String>
+                              <x:String>카타르 (카타르리얄 QAR)</x:String>
+                              <x:String>캐나다 (캐나다달러 CAD)</x:String>
+                              <x:String>쿠웨이트 (쿠웨이트디나르 KWD)</x:String>
+                              <x:String>태국 (바트 THB)</x:String>
+                              <x:String>터키 (터키리라 TRY)</x:String>
+                              <x:String>파키스탄 (파키스탄루피 PKR)</x:String>
+                              <x:String>폴란드 (폴란드줄러티 PLN)</x:String>
+                              <x:String>필리핀 (페소 PHP)</x:String>
+                              <x:String>헝가리 (헝가리포린트 HUF)</x:String>
+                              <x:String>홍콩 (홍콩달러 HKD)</x:String>
+                            </scg:List>
+                          </ui:SelectItem.Items>
+                          <ui:SelectItem.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="0a2a8af1c18700690ddf4fe4ef18064c" Selector="&lt;webctrl idx='1' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+                          </ui:SelectItem.Target>
+                        </ui:SelectItem>
+                        <ui:GetValue ContinueOnError="{x:Null}" DisplayName="달러 환율" sap:VirtualizedContainerService.HintSize="330,106" sap2010:WorkflowViewState.IdRef="GetValue_3">
+                          <ui:GetValue.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="7f61284f25e453a60981ccff65e9bf37" Selector="&lt;webctrl id='ext_to_money' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                          </ui:GetValue.Target>
+                          <ui:GetValue.Value>
+                            <OutArgument x:TypeArguments="ui:GenericValue">[rate]</OutArgument>
+                          </ui:GetValue.Value>
+                        </ui:GetValue>
+                        <Assign sap:VirtualizedContainerService.HintSize="330,63" sap2010:WorkflowViewState.IdRef="Assign_6">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int64">[bigInteger]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int64">[(CLng(rate.Replace(",", "")) * CLng(readCell))]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:WriteCell Cell="W7" DisplayName="달러 입력" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_22" SheetName="Sheet1" Text="[bigInteger.ToString]" WorkbookPath="[filename]" />
+                        <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="위안" sap:VirtualizedContainerService.HintSize="330,134" sap2010:WorkflowViewState.IdRef="SelectItem_3" Item="중국 (위안 CNY)">
+                          <ui:SelectItem.Items>
+                            <scg:List x:TypeArguments="x:String" Capacity="64">
+                              <x:String>대한민국(원 KRW)</x:String>
+                              <x:String>미국 (달러 USD)</x:String>
+                              <x:String>일본 (엔 JPY)</x:String>
+                              <x:String>유로 (유로 EUR)</x:String>
+                              <x:String>중국 (위안 CNY)</x:String>
+                              <x:String>호주 (오스트레일리아달러 AUD)</x:String>
+                              <x:String>남아공 (남아프리카공화국자르 ZAR)</x:String>
+                              <x:String>노르웨이 (노르웨이크로네 NOK)</x:String>
+                              <x:String>뉴질랜드 (뉴질랜드달러 NZD)</x:String>
+                              <x:String>대만 (신타이완달러 TWD)</x:String>
+                              <x:String>덴마크 (덴마크크로네 DKK)</x:String>
+                              <x:String>러시아 (러시아루블 RUB)</x:String>
+                              <x:String>말레이시아 (링키트 MYR)</x:String>
+                              <x:String>멕시코 (멕시코페소 MXN)</x:String>
+                              <x:String>몽골 (몽골투그릭 MNT)</x:String>
+                              <x:String>바레인 (바레인디나르 BHD)</x:String>
+                              <x:String>방글라데시 (방글라데시타카 BDT)</x:String>
+                              <x:String>베트남 (베트남동 VND)</x:String>
+                              <x:String>브라질 (레알 BRL)</x:String>
+                              <x:String>브루나이 (부루네이달러 BND)</x:String>
+                              <x:String>사우디 (사우디리얄 SAR)</x:String>
+                              <x:String>스웨덴 (스웨덴크로나 SEK)</x:String>
+                              <x:String>스위스 (스위스프랑 CHF)</x:String>
+                              <x:String>싱가포르 (싱가폴달러 SGD)</x:String>
+                              <x:String>아랍에미리트 (아랍에미리트디르함 AED)</x:String>
+                              <x:String>영국 (파운드 GBP)</x:String>
+                              <x:String>요르단 (요르단디나르 JOD)</x:String>
+                              <x:String>이스라엘 (이스라엘쉐캐림 ILS)</x:String>
+                              <x:String>이집트 (이집트파운드 EGP)</x:String>
+                              <x:String>인도 (루피 INR)</x:String>
+                              <x:String>인도네시아 (인도네시아루피아 IDR)</x:String>
+                              <x:String>체코 (체코코루나 CZK)</x:String>
+                              <x:String>카자흐스탄 (카자흐스탄텡게 KZT)</x:String>
+                              <x:String>카타르 (카타르리얄 QAR)</x:String>
+                              <x:String>캐나다 (캐나다달러 CAD)</x:String>
+                              <x:String>쿠웨이트 (쿠웨이트디나르 KWD)</x:String>
+                              <x:String>태국 (바트 THB)</x:String>
+                              <x:String>터키 (터키리라 TRY)</x:String>
+                              <x:String>파키스탄 (파키스탄루피 PKR)</x:String>
+                              <x:String>폴란드 (폴란드줄러티 PLN)</x:String>
+                              <x:String>필리핀 (페소 PHP)</x:String>
+                              <x:String>헝가리 (헝가리포린트 HUF)</x:String>
+                              <x:String>홍콩 (홍콩달러 HKD)</x:String>
+                            </scg:List>
+                          </ui:SelectItem.Items>
+                          <ui:SelectItem.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="0a2a8af1c18700690ddf4fe4ef18064c" Selector="&lt;webctrl idx='1' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+                          </ui:SelectItem.Target>
+                        </ui:SelectItem>
+                        <ui:GetValue ContinueOnError="{x:Null}" DisplayName="위안" sap:VirtualizedContainerService.HintSize="330,106" sap2010:WorkflowViewState.IdRef="GetValue_5">
+                          <ui:GetValue.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="7f61284f25e453a60981ccff65e9bf37" Selector="&lt;webctrl id='ext_to_money' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                          </ui:GetValue.Target>
+                          <ui:GetValue.Value>
+                            <OutArgument x:TypeArguments="ui:GenericValue">[rate]</OutArgument>
+                          </ui:GetValue.Value>
+                        </ui:GetValue>
+                        <Assign sap:VirtualizedContainerService.HintSize="330,63" sap2010:WorkflowViewState.IdRef="Assign_11">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int64">[bigInteger]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int64">[(CLng(rate.Replace(",", "")) * CLng(readCell))]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:WriteCell Cell="Y7" DisplayName="위안 입력" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_24" SheetName="Sheet1" Text="[bigInteger.ToString]" WorkbookPath="[filename]" />
+                        <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="유로" sap:VirtualizedContainerService.HintSize="330,134" sap2010:WorkflowViewState.IdRef="SelectItem_4" Item="유로 (유로 EUR)">
+                          <ui:SelectItem.Items>
+                            <scg:List x:TypeArguments="x:String" Capacity="64">
+                              <x:String>대한민국(원 KRW)</x:String>
+                              <x:String>미국 (달러 USD)</x:String>
+                              <x:String>일본 (엔 JPY)</x:String>
+                              <x:String>유로 (유로 EUR)</x:String>
+                              <x:String>중국 (위안 CNY)</x:String>
+                              <x:String>호주 (오스트레일리아달러 AUD)</x:String>
+                              <x:String>남아공 (남아프리카공화국자르 ZAR)</x:String>
+                              <x:String>노르웨이 (노르웨이크로네 NOK)</x:String>
+                              <x:String>뉴질랜드 (뉴질랜드달러 NZD)</x:String>
+                              <x:String>대만 (신타이완달러 TWD)</x:String>
+                              <x:String>덴마크 (덴마크크로네 DKK)</x:String>
+                              <x:String>러시아 (러시아루블 RUB)</x:String>
+                              <x:String>말레이시아 (링키트 MYR)</x:String>
+                              <x:String>멕시코 (멕시코페소 MXN)</x:String>
+                              <x:String>몽골 (몽골투그릭 MNT)</x:String>
+                              <x:String>바레인 (바레인디나르 BHD)</x:String>
+                              <x:String>방글라데시 (방글라데시타카 BDT)</x:String>
+                              <x:String>베트남 (베트남동 VND)</x:String>
+                              <x:String>브라질 (레알 BRL)</x:String>
+                              <x:String>브루나이 (부루네이달러 BND)</x:String>
+                              <x:String>사우디 (사우디리얄 SAR)</x:String>
+                              <x:String>스웨덴 (스웨덴크로나 SEK)</x:String>
+                              <x:String>스위스 (스위스프랑 CHF)</x:String>
+                              <x:String>싱가포르 (싱가폴달러 SGD)</x:String>
+                              <x:String>아랍에미리트 (아랍에미리트디르함 AED)</x:String>
+                              <x:String>영국 (파운드 GBP)</x:String>
+                              <x:String>요르단 (요르단디나르 JOD)</x:String>
+                              <x:String>이스라엘 (이스라엘쉐캐림 ILS)</x:String>
+                              <x:String>이집트 (이집트파운드 EGP)</x:String>
+                              <x:String>인도 (루피 INR)</x:String>
+                              <x:String>인도네시아 (인도네시아루피아 IDR)</x:String>
+                              <x:String>체코 (체코코루나 CZK)</x:String>
+                              <x:String>카자흐스탄 (카자흐스탄텡게 KZT)</x:String>
+                              <x:String>카타르 (카타르리얄 QAR)</x:String>
+                              <x:String>캐나다 (캐나다달러 CAD)</x:String>
+                              <x:String>쿠웨이트 (쿠웨이트디나르 KWD)</x:String>
+                              <x:String>태국 (바트 THB)</x:String>
+                              <x:String>터키 (터키리라 TRY)</x:String>
+                              <x:String>파키스탄 (파키스탄루피 PKR)</x:String>
+                              <x:String>폴란드 (폴란드줄러티 PLN)</x:String>
+                              <x:String>필리핀 (페소 PHP)</x:String>
+                              <x:String>헝가리 (헝가리포린트 HUF)</x:String>
+                              <x:String>홍콩 (홍콩달러 HKD)</x:String>
+                            </scg:List>
+                          </ui:SelectItem.Items>
+                          <ui:SelectItem.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="0a2a8af1c18700690ddf4fe4ef18064c" Selector="&lt;webctrl idx='1' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+                          </ui:SelectItem.Target>
+                        </ui:SelectItem>
+                        <ui:GetValue ContinueOnError="{x:Null}" DisplayName="유로 환율" sap:VirtualizedContainerService.HintSize="330,106" sap2010:WorkflowViewState.IdRef="GetValue_6">
+                          <ui:GetValue.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="7f61284f25e453a60981ccff65e9bf37" Selector="&lt;webctrl id='ext_to_money' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                          </ui:GetValue.Target>
+                          <ui:GetValue.Value>
+                            <OutArgument x:TypeArguments="ui:GenericValue">[rate]</OutArgument>
+                          </ui:GetValue.Value>
+                        </ui:GetValue>
+                        <Assign sap:VirtualizedContainerService.HintSize="330,63" sap2010:WorkflowViewState.IdRef="Assign_12">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int64">[bigInteger]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int64">[(CLng(rate.Replace(",", "")) * CLng(readCell))]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:WriteCell Cell="X7" DisplayName="유로 입력" sap:VirtualizedContainerService.HintSize="330,115" sap2010:WorkflowViewState.IdRef="WriteCell_25" SheetName="Sheet1" Text="[bigInteger.ToString]" WorkbookPath="[filename]" />
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:OpenBrowser.Body>
+                </ui:OpenBrowser>
+              </Sequence>
+              <FlowStep.Next>
+                <FlowStep x:Name="__ReferenceID4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:Point x:Key="ShapeLocation">392,467</av:Point>
+                      <av:Size x:Key="ShapeSize">216,74</av:Size>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="368,251" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:SendMail Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" Email="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Send SMTP Mail Message" EnableSSL="True" sap:VirtualizedContainerService.HintSize="330,159" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="수출입 관련 프로세스" To="bskim0711@espid.com">
+                      <ui:SendMail.Files>
+                        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                          <InArgument x:TypeArguments="x:String">[filename]</InArgument>
+                        </scg:List>
+                      </ui:SendMail.Files>
+                    </ui:SendMail>
+                  </Sequence>
+                </FlowStep>
+              </FlowStep.Next>
+            </FlowStep>
+          </FlowStep.Next>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">2,463</av:Point>
+          <av:Size x:Key="ShapeSize">216,74</av:Size>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="TEST" sap:VirtualizedContainerService.HintSize="216,74" sap2010:WorkflowViewState.IdRef="Sequence_24">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="330,59" sap2010:WorkflowViewState.IdRef="MessageBox_16" Text="[&quot;2019123456789(2019.08.07)&quot;.Split(&quot;(&quot;c)(1).Replace(&quot;)&quot;, &quot;&quot;)]" TopMost="True" />
+      </Sequence>
+    </FlowStep>
+    <x:Reference>__ReferenceID4</x:Reference>
+  </Flowchart>
+</Activity>
