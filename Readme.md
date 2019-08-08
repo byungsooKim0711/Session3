@@ -3,3 +3,4 @@
 - session3 : 재무 회계 관련 프로세스
 - session3-1: 항공편 찾기
 - session4 : 수출입 관련 프로세스
+- session5 : 인사 업무 관련 프로세스
